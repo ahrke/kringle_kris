@@ -1,0 +1,29 @@
+@import './variables.css';
+
+.login_page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 30px;
+  background-color: var(--login_back);
+  font-family: 'Poppins';
+}
+
+.login_page > input, button {
+  border-radius: 4px;
+  background-color: var(--color_1);
+  border: none;
+  padding: 15px;
+  width: 50%;
+  margin: 10px;
+  color: var(--login_back);
+}
+
+.login_page > button {
+  font-family: 'Lobster';
+  font-size: 1.5em;
+  color: aliceblue;
+  background-color: var(--button_color_2);
+}
