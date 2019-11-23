@@ -1,0 +1,29 @@
+@import './variables.css';
+
+.main_page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: var(--green_1);
+  color: var(--text_white);
+  font-family: 'Poppins';
+}
+
+.main_auth_buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.main_page-button {
+  width: 30%;
+  background-color: var(--red_1);
+  font-family: 'Lobster';
+  margin: 20px;
+  font-size: 1.5em;
+}

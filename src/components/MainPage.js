@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import * as firebase from 'firebase';
 
+import './styles/main.css';
+
 class MainPage extends React.Component {
   constructor() {
     super();
@@ -25,27 +27,40 @@ class MainPage extends React.Component {
 
   noUserButtons = () => {
     return (
-      <div>
-        <Link to='/register'>
-          <button>Sign up!</button>
-        </Link>
-        <Link to='/login'>
-          <button>Login</button>
-        </Link>
+      <div className='main_auth_buttons'>
+        <button 
+          onClick={e => {
+            this.props.history.push('/register');
+          }}
+          className='main_page-button'
+        >
+          Sign up!
+        </button>
+        <button 
+          onClick={e => {
+            this.props.history.push('/login');
+          }}
+          className='main_page-button'
+        >
+          Login
+        </button>
       </div>
     )
   }
 
   mainPage = () => {
     return (
-      <div>
+      <div className='main_auth_buttons'>
         <h2>{this.state.user.email}</h2>
-        <button onClick={e => {
-          firebase.auth().signOut();
-          this.setState({
-            user: null
-          })
-        }}>
+        <button 
+          onClick={e => {
+            firebase.auth().signOut();
+            this.setState({
+              user: null
+            })
+          }}
+          className='main_page-button'
+        >
           logout
         </button>
       </div>
@@ -54,8 +69,8 @@ class MainPage extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Main Page</h1>
+      <div className='main_page'>
+        {/* <h1>Main Page</h1> */}
         {!this.state.user ? this.noUserButtons() : this.mainPage()}
       </div>
     )

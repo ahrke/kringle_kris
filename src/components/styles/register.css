@@ -7,21 +7,19 @@
   align-items: center;
   height: 100%;
   padding: 30px;
-  background-color: var(--register_back);
+  background-color: var(--red_1);
   font-family: 'Poppins';
 }
 
-.register_page > input, button {
-  border-radius: 4px;
-  border: none;
-  padding: 15px;
+.register_page-input {
   width: 50%;
   margin: 10px;
+  color: var(--green_2);
 }
 
-.register_page > button {
+.register_page-button {
   font-family: 'Lobster';
   font-size: 1.5em;
-  color: aliceblue;
   background-color: var(--button_color);
+  color: var(--text_white);
 }

@@ -10,7 +10,8 @@ class RegisterPage extends React.Component {
       name: '',
       email: '',
       password: '',
-      poke_num: ''
+      poke_num: '',
+      err: null
     }
   }
 
@@ -21,9 +22,17 @@ class RegisterPage extends React.Component {
   onClickHandler = (e) => {
     e.preventDefault();
 
+    if (!this.state.name || !this.state.email || !this.state.password) {
+      this.setState({
+        err: 'Please fill in all fields. You want to end up on the naughty list?'
+      })
+
+      return;
+    }
+
     firebase.database().ref().child('users').child(this.state.name.trim() + this.state.poke_num).set({
       name: this.state.name,
-      poke_num: this.state.poke_num,
+      poke_num: this.state.poke_num || Math.floor(Math.random() * 150),
       email: this.state.email
     })
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
@@ -39,18 +48,38 @@ class RegisterPage extends React.Component {
 
   onInput = (value, type) => {
     this.setState({
-      [type]: value
+      [type]: value,
+      err: null
     })
   }
 
   render() {
     return (
       <div className='register_page'>
-        <input type='text' placeholder='name...' id='user_name' onChange={e => this.onInput(e.target.value, 'name')} />
-        <input type='number' placeholder='number between 1 - 150' id='poke_num' onChange={e => this.onInput(e.target.value, 'poke_num')} />
-        <input type='email' placeholder='email...' id='user_email' onChange={e => this.onInput(e.target.value, 'email')} />
-        <input type='password' placeholder='password' id='user_password' onChange={e => this.onInput(e.target.value, 'password')} />
-        <button onClick={this.onClickHandler} >Sign up</button>
+        <h4>{this.state.err}</h4>
+        <form onSubmit={this.onClickHandler} >
+          <input type='text' 
+            className='register_page-input' placeholder='name...' id='user_name' 
+            onChange={e => this.onInput(e.target.value, 'name')} 
+          />
+          <input type='number' 
+            className='register_page-input' placeholder='number between 1 - 150' id='poke_num' 
+            onChange={e => this.onInput(e.target.value, 'poke_num')} 
+          />
+          <input type='email' 
+            className='register_page-input' placeholder='email...' id='user_email' 
+            onChange={e => this.onInput(e.target.value, 'email')} 
+          />
+          <input type='password' 
+            className='register_page-input' placeholder='password' id='user_password' 
+            onChange={e => this.onInput(e.target.value, 'password')} 
+          />
+          <button type='submit' 
+            className='register_page-input register_page-button' 
+          >
+            Sign up
+          </button>
+        </form>
        </div>
     )
   }
