@@ -20,15 +20,26 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const rootRef = firebase.database().ref().child('users');
+    // const rootRef = firebase.database().ref().child('users');
 
-    rootRef.on('value', snap => {
-      this.setState({
-        users: snap.val()
+    // rootRef.on('value', snap => {
+    //   this.setState({
+    //     users: snap.val()
+    //   })
+    // })
+
+    firebase.auth().onAuthStateChanged(user => {
+      console.log("inside app compDidMount")
+      firebase.database().ref('users/' + user.uid).once('value').then(u => {
+        this.setState({
+          user: {
+            name: u.name,
+            email: u.email,
+            poke_num: u.poke_num
+          }
+        })
       })
     })
-
-    firebase.auth().onAuthStateChanged(user => console.log("==|=|> user:", user))
   }
 
   render() {

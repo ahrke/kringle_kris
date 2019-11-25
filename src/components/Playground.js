@@ -42,10 +42,20 @@ class Playground extends React.Component {
 
     let users = this.state.users.map(u => u.name)
 
-    const randomAssign = usersArr =>{
+    const randomAssign = arr => {
+      let usersArr = [...arr];
       this.state.users.forEach(u => {
+        let duplicate = null;
+        if (usersArr.includes(u.name) && usersArr.length > 1) {
+          duplicate = usersArr.splice(usersArr.indexOf(u.name),1);
+        } else if (usersArr.length === 1 && usersArr[0] === u.name) {
+          usersArr[0] = 'RUDOLPH, WE HAVE A PROBLEM!'
+        }
+
         let recipient = usersArr.splice(Math.floor(Math.random() * usersArr.length), 1)[0]
         
+        if (duplicate) usersArr.push(u.name);
+
         firebase.database().ref('users/' + u.key).update({
           recipient
         })
@@ -54,33 +64,23 @@ class Playground extends React.Component {
 
     randomAssign(users)
 
-    // let everythingOK = true
+    let arr = []
+    snap.forEach(s => {
+      let arr = [];
+      let u = {
+        key: s.key,
+        ...s.val()
+      }
+      arr.push(u)
+    })
 
-    // do {
-    //   snap.forEach(s => {
-    //     let newState = this.state.users
-    //     let u = {
-    //       key: s.key,
-    //       ...s.val()
-    //     }
-    //     newState.push(u)
-    //     this.setState({
-    //       users: newState
-    //     })
-    //   })
-
-    //   let us = this.state.users
-
-    //   for (let i = 0; i < us.length - 1; i++) {
-    //     if (us[i].name === us[i].recipient) {
-    //       everythingOK = false;
-    //       randomAssign(users)
-    //       continue;
-    //     }
-    //   } 
-
-    //   everythingOK = true
-    // } while (everythingOK)
+    for (let i = 0; i < arr.length - 1; i++) {
+      if (arr[i].name === arr[i].recipient || arr[i].recipient === 'RUDOLPH, WE HAVE A PROBLEM!') {
+        console.log('RUDOLPH, WE HAVE A PROBLEM!');
+        // randomAssign(users)
+        break;
+      } 
+    } 
 
     console.log("whooo...we're good. Everything's got a recipient")
   }

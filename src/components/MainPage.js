@@ -13,14 +13,16 @@ class MainPage extends React.Component {
   }
 
   componentDidMount() {
+    console.log("component did mount...mainpage")
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        this.setState({
-          user
+        firebase.database().ref('users/' + user.uid).once('value').then(u => {
+          console.log("inside u:",u.val())
+          let user = u.val()
+          this.setState({
+            user
+          })
         })
-        console.log("==|> user:",user)
-      } else {
-        console.log("==> no user")
       }
     })
   }
@@ -51,7 +53,10 @@ class MainPage extends React.Component {
   mainPage = () => {
     return (
       <div className='main_auth_buttons'>
-        <h2>{this.state.user.email}</h2>
+        <h2>Hey {this.state.user.name}!</h2>
+        <h4>{this.state.user.email}</h4>
+        <h3>Recipient: {this.state.user.recipient || '  --  '}</h3>
+        {/* <h2>{this.state.user.poke_num}</h2> */}
         <button 
           onClick={e => {
             firebase.auth().signOut();

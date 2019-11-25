@@ -30,19 +30,21 @@ class RegisterPage extends React.Component {
       return;
     }
 
-    firebase.database().ref().child('users').child(this.state.name.trim() + this.state.poke_num).set({
-      name: this.state.name,
-      poke_num: this.state.poke_num || Math.floor(Math.random() * 150),
-      email: this.state.email
-    })
     firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then(user => {
-        if (user) {
+    .then(user => {
+      if (user) {
+        firebase.database().ref('users').child(user.user.uid).set({
+          name: this.state.name,
+          poke_num: this.state.poke_num || Math.floor(Math.random() * 150),
+          email: this.state.email
+        })
+        .then (res => {
           this.props.history.push('/')
-        } else {
-          
-        }
-      })
+        })
+      } else {
+        
+      }
+    })
     
   }
 
