@@ -27,21 +27,32 @@ class MainPage extends React.Component {
     })
   }
 
+  logout = e => {
+    firebase.auth().signOut();
+    this.setState({
+      user: null
+    })
+  }
+
+  register = e => {
+    this.props.history.push('/register');
+  }
+
+  login = e => {
+    this.props.history.push('/login');
+  }
+
   noUserButtons = () => {
     return (
       <div className='main_auth_buttons'>
         <button 
-          onClick={e => {
-            this.props.history.push('/register');
-          }}
+          onClick={this.register}
           className='main_page-button'
         >
           Sign up!
         </button>
         <button 
-          onClick={e => {
-            this.props.history.push('/login');
-          }}
+          onClick={this.login}
           className='main_page-button'
         >
           Login
@@ -58,12 +69,7 @@ class MainPage extends React.Component {
         <h3>Recipient: {this.state.user.recipient || '  --  '}</h3>
         {/* <h2>{this.state.user.poke_num}</h2> */}
         <button 
-          onClick={e => {
-            firebase.auth().signOut();
-            this.setState({
-              user: null
-            })
-          }}
+          onClick={this.logout}
           className='main_page-button'
         >
           logout
