@@ -1,6 +1,8 @@
 import React from 'react';
 import * as firebase from 'firebase';
 
+import './styles/playground.css';
+
 class Playground extends React.Component {
   constructor() {
     super();
@@ -96,6 +98,10 @@ class Playground extends React.Component {
       <div>
         <button onClick={this.giveRandomRecipient} >Add random recipient</button>
         {this.state.users && this.state.users.map(u => <h3>{u.name}</h3>)}
+
+        <div className='giftbox'>
+          <h3 className='tag_message'>hello</h3>
+        </div>
       </div>
     )
   }

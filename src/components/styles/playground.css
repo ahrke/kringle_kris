@@ -1,0 +1,14 @@
+.giftbox {
+  margin: 30px;
+  background-color: #91bd3a;
+  width: 400px;
+  height: 400px;
+  text-align: center;
+  transform: rotate(30deg);
+}
+
+.tag_message {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+}

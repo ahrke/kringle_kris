@@ -27,3 +27,40 @@
   margin: 20px;
   font-size: 1.5em;
 }
+
+.tag {
+  display: block;
+  position: relative;
+  margin-bottom: 30px;
+  transform: rotate(-16deg);
+}
+
+.to {
+  position: absolute;
+  bottom: 37px;
+  left: 46%;
+  font-size: 1.5em;
+  color: #42b883;
+}
+
+.from {
+  position: absolute;
+  bottom: 15px;
+  left: 48%;
+  font-size: 1.2em;
+  color: black;
+}
+
+@media screen and (max-width: 750px) {
+  .to {
+    bottom: 27px;
+    left: 46%;
+    font-size: 1.1em;
+  }
+  
+  .from {
+    bottom: 7px;
+    left: 48%;
+    font-size: 1em;
+  }
+}

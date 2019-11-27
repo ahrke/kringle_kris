@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import * as firebase from 'firebase';
 
+import gifts from '../images/gifts_1.png';
+import tag from '../images/dog_cat_tag.jpg';
+
 import './styles/main.css';
 
 class MainPage extends React.Component {
@@ -64,10 +67,16 @@ class MainPage extends React.Component {
   mainPage = () => {
     return (
       <div className='main_auth_buttons'>
-        <h2>Hey {this.state.user.name}!</h2>
+        {/* <h2>Hey {this.state.user.name}!</h2>
         <h4>{this.state.user.email}</h4>
-        <h3>Recipient: {this.state.user.recipient || '  --  '}</h3>
+        <h3>Recipient: {this.state.user.recipient || '  --  '}</h3> */}
         {/* <h2>{this.state.user.poke_num}</h2> */}
+        <div className='tag'>
+          <img src={tag} style={{ width: '20%' }} />
+          <h4 className='to'>{this.state.user.recipient || '  --  '}</h4>
+          <h4 className='from'>{this.state.user.name}</h4>
+        </div>
+        <img src={gifts} style={{ width: "30%", borderRadius: '5px' }} />
         <button 
           onClick={this.logout}
           className='main_page-button'
