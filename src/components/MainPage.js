@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import * as firebase from 'firebase';
 
+import Snow from 'react-snow-effect';
 import gifts from '../images/gifts_1.png';
 import tag from '../images/dog_cat_tag.jpg';
 
@@ -67,6 +68,7 @@ class MainPage extends React.Component {
   mainPage = () => {
     return (
       <div className='main_auth_buttons'>
+        <Snow />
         {/* <h2>Hey {this.state.user.name}!</h2>
         <h4>{this.state.user.email}</h4>
         <h3>Recipient: {this.state.user.recipient || '  --  '}</h3> */}
