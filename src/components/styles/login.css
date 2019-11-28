@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 60px;
   height: 100%;
   padding: 30px;
   background-color: var(--login_back);

@@ -1,0 +1,24 @@
+@import './variables.css';
+
+.rules_container {
+  height: 100%;
+  background-color: var(--red_1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--text_white);
+}
+
+.rules_container > ul {
+  list-style: none;
+}
+
+.rules_imgs {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.rules_imgs > img {
+  width: 30%;
+}
