@@ -42,7 +42,7 @@
 
 .to {
   position: absolute;
-  bottom: 37px;
+  bottom: 58px;
   left: 46%;
   font-size: 1.5em;
   color: #42b883;
@@ -50,7 +50,7 @@
 
 .from {
   position: absolute;
-  bottom: 15px;
+  bottom: 40px;
   left: 48%;
   font-size: 1.2em;
   color: black;
@@ -88,15 +88,15 @@
 
 @media screen and (max-width: 750px) {
   .to {
-    bottom: 27px;
+    bottom: 70px;
     left: 46%;
-    font-size: 1.1em;
+    font-size: 1.4em;
   }
   
   .from {
-    bottom: 7px;
+    bottom: 47px;
     left: 48%;
-    font-size: 1em;
+    font-size: 1.2em;
   }
 }
 @media screen and (max-width: 650px) {
