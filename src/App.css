@@ -18,6 +18,8 @@ button, input {
 
 * {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 code {
@@ -32,13 +34,6 @@ code {
 
 .App-link {
   color: #09d3ac;
-}
-
-.page {
-  position: absolute;
-  top: 0px;
-  left: 0;
-  right: 0;
 }
 
 .fade-appear,

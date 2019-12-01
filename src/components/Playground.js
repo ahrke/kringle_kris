@@ -7,7 +7,8 @@ class Playground extends React.Component {
   constructor() {
     super();
     this.state = {
-      users: []
+      users: [],
+      problem: false
     }
   }
 
@@ -78,13 +79,21 @@ class Playground extends React.Component {
 
     for (let i = 0; i < arr.length - 1; i++) {
       if (arr[i].name === arr[i].recipient || arr[i].recipient === 'RUDOLPH, WE HAVE A PROBLEM!') {
-        console.log('RUDOLPH, WE HAVE A PROBLEM!');
         // randomAssign(users)
+        this.setState({
+          problem: true
+        });
         break;
       } 
     } 
+  }
 
-    console.log("whooo...we're good. Everything's got a recipient")
+  problemMessage = () => {
+    if (this.state.problem) {
+      return 'RUDOLPH, WE HAVE A PROBLEM!'
+    } else {
+      return "whooo...we're good. Everyone's got a recipient"
+    }
   }
 
   emailVerification = () => {
@@ -95,10 +104,10 @@ class Playground extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{ marginTop: '200px' }}>
         <button onClick={this.giveRandomRecipient} >Add random recipient</button>
         {this.state.users && this.state.users.map(u => <h3>{u.name}</h3>)}
-
+        <h1>{this.problemMessage()}</h1>
         <div className='giftbox'>
           <h3 className='tag_message'>hello</h3>
         </div>

@@ -49,23 +49,23 @@ class App extends React.Component {
     return (
       <div className='App'>
         <NavBar />
-        <Route render={({location}) => (
-          <TransitionGroup>
-            <CSSTransition
+        {/* <Route render={({location}) => ( */}
+          {/* <TransitionGroup> */}
+            {/* <CSSTransition
               key={location.key}
               timeout={400}
               classNames='fade'
-            >
-              <Switch location={location}>
+            > */}
+              <Switch>
                 <Route path='/login' component={LoginPage} />
                 <Route path='/register' component={RegisterPage} />
                 <Route exact path='/' component={MainPage} />
                 <Route path='/rules' component={RulesPage} />
                 <Route path='/playground' component={Playground} />
               </Switch>
-            </CSSTransition>
-          </TransitionGroup>
-        )} />
+            {/* </CSSTransition> */}
+          {/* </TransitionGroup> */}
+        {/* )} /> */}
       </div>
     )
   }

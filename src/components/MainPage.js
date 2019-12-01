@@ -60,15 +60,15 @@ class MainPage extends React.Component {
 
   noUser = () => {
     return (
-      <CSSTransition
-          in={true}
-          appear={true}
-          timeout={1000}
-          classNames="fade"
-          out={true}
-        >
+      // <CSSTransition
+      //     in={true}
+      //     appear={true}
+      //     timeout={1000}
+      //     // classNames="fade"
+      //     out={true}
+      //   >
           <NoUserPage register={this.register} login={this.login} />
-        </CSSTransition>
+        // </CSSTransition>
     )
   }
 
@@ -100,7 +100,7 @@ class MainPage extends React.Component {
           <h3>Recipient: {this.state.user.recipient || '  --  '}</h3> */}
           {/* <h2>{this.state.user.poke_num}</h2> */}
           <div className='tag'>
-            <img src={tag} style={{ width: '20%' }} />
+            <img src={tag} />
             <h4 className='to'>{this.state.user.recipient || '  --  '}</h4>
             <h4 className='from'>{this.state.user.name}</h4>
           </div>
@@ -118,7 +118,7 @@ class MainPage extends React.Component {
 
   render() {
     return (
-      <div className='main_page page'>
+      <div className='main_page'>
         {/* <h1>Main Page</h1> */}
         {!this.state.user ? 
           this.state.loading ? this.loading() : this.noUser()
