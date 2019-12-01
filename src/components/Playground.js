@@ -69,7 +69,6 @@ class Playground extends React.Component {
 
     let arr = []
     snap.forEach(s => {
-      let arr = [];
       let u = {
         key: s.key,
         ...s.val()
